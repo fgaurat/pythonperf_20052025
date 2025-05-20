@@ -1,24 +1,23 @@
+def old_mult2(the_list):
+    r = []
+    for i in the_list:
+        r.append(i*2)
+
+    return r
 
 
-
-def add(the_list):
-    result = 0
-    for num in the_list:
-        result += num
-    return result
+def mult2(i):
+    return i*2
 
 
 def main():
-    # AAA
-
-    # Arrange
     l = [10,20,30,40,50]
-    
-    # Act
-    result = add(l)
-    
-    # Assert
-    print(result) # 150
+
+    # l2 = mult2(l)
+    l2 = map(mult2,l)
+    print(l)
+    print(list(l2))
+
 
 if __name__ == '__main__':
     main()
