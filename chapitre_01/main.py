@@ -1,23 +1,8 @@
-def old_mult2(the_list):
-    r = []
-    for i in the_list:
-        r.append(i*2)
-
-    return r
-
-
-def mult2(i):
-    return i*2
-
-
 def main():
-    l = [10,20,30,40,50]
+    # data = int(input("value:"))
 
-    # l2 = mult2(l)
-    l2 = map(mult2,l)
-    print(l)
-    print(list(l2))
-
+    if (data := int(input("value:"))) and data >5:
+        print(">5",data)
 
 if __name__ == '__main__':
     main()
