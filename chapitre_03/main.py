@@ -4,8 +4,13 @@ def div(a,b):
     return a/b
 
 def call_div(a,b):
-    r = div(a,b)
-    print(r)
+    try:
+        print("OPEN LOG")
+        r = div(a,b)
+        print(r)
+    finally:    
+        print("CLOSE LOG")
+        
     return r
 
 def main():
@@ -28,8 +33,7 @@ def main():
         print('Exception',e,type(e))
     else:
         print("pas d'erreur")
-    finally:
-        print("finally")
+
 
     print("fin du code")
 if __name__ == '__main__':
