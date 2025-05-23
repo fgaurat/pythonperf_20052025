@@ -3,6 +3,24 @@ from DataRectangle import DataRectangle
 
 def main():
     r = Rectangle(100, 200) # création d'un objet
+    r1 = Rectangle(100, 200) # création d'un objet
+    r2 = Rectangle() # création d'un objet
+    r3 = Rectangle.buildFromStr("3;5") # création d'un objet
+    print(Rectangle.get_cpt()) # 2
+    print(r.get_cpt()) # 2
+    print(r1.get_cpt()) # 2
+    # Rectangle.get_cpt() = 1000
+    # print(Rectangle.get_cpt()) # 2
+    # print(r.get_cpt()) # 2
+    # print(r1.get_cpt()) # 2
+
+    # print(r3)
+    # r3.toto = "une valeur"
+    # print(r3.toto)
+
+
+def old_main():
+    r = Rectangle(100, 200) # création d'un objet
 
     # region old
     # print(r.get_longueur()) # 100 # lectures des propriétés

@@ -1,25 +1,26 @@
 
 
-class Rectangle:
-    __slots__ = ("__longueur", "__largeur")
+from typing import Any
 
-    #static
-    __cpt = 0
+
+class RectangleSingleton:
+    
+    instance = None
+    
+    def __new__(cls,*args,**kwargs):
+        if cls.instance is None:
+            cls.instance = super().__new__(cls)
+        return cls.instance
 
     def __init__(self,longueur:int=1,largeur:int=1) -> None:
         self.__longueur = longueur
         self.__largeur = largeur
-        Rectangle.__cpt+=1
-
-    @classmethod
-    def buildFromStr(cls,value):
-        a,b = [int(v) for v in value.split(";")]
-        return cls(a,b)
-
-    @staticmethod
-    def get_cpt():        
-        return Rectangle.__cpt
     
+
+    def __call__(self) -> Any:
+        print("__call__")
+
+
     @property
     def longueur(self):
         """
@@ -47,13 +48,10 @@ class Rectangle:
     
 
     def __eq__(self, value: object) -> bool:
-        if not isinstance(value, Rectangle):
+        if not isinstance(value, RectangleSingleton):
             return NotImplemented
 
         return self.longueur == value.longueur and self.largeur == value.largeur
 
     def __str__(self):
         return f"{self.__class__.__name__} {self.longueur=}, {self.largeur=}"
-
-    # def __int__(self):
-    #     return self.surface
