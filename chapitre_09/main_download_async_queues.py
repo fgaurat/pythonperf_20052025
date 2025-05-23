@@ -29,7 +29,7 @@ async def main():
     queue_save = asyncio.Queue()
     
     nb_download_workers = 10
-    nb_save_workers = 1
+    nb_save_workers = 5
 
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')

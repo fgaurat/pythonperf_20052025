@@ -3,6 +3,20 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
+
+# https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html#first-steps-with-celery
+
+# docker pull rabbitmq
+# docker run -d -p 5672:5672 rabbitmq
+
+# pour Windows : 
+# celery -A celery_tasks worker --loglevel=INFO -P solo 
+
+# pour les autres 
+# celery -A celery_tasks worker --loglevel=INFO
+
+
+
 def main():
     app = Celery('tasks', broker='pyamqp://guest@localhost//',backend='rpc://')
     result = app.send_task('celery_tasks.add',args=[2,3])

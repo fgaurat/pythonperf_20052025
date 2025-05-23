@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from CustomerDAO import CustomerDAO
 app = Flask(__name__)
 
@@ -7,11 +7,11 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-@app.route("/")
-def index():
+@app.route("/oldindex")
+def oldindex():
     dao = CustomerDAO('customers_db.db')
     customers = dao.findAll()
-    html= "<table>"
+    html= "<table><tbody>"
 
     for customer in customers:
         html+=f"""
@@ -22,5 +22,15 @@ def index():
             <td>{customer.email}</td>
         </tr>        
 """
-    html+="</table>"
+    html+="</tbody></table>"
     return html
+
+
+
+# flask run --debug
+
+@app.route("/")
+def index():
+    dao = CustomerDAO('customers_db.db')
+    customers = dao.findAll()
+    return render_template("customers.html", customers=customers)
